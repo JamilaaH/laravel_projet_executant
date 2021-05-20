@@ -1,22 +1,16 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<x-app-layout>
 
-        <!-- Validation Errors -->
+    <div class="container">
+        @dump($user)
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('register') }}">
+        <form action={{route('user.update', $user)}} method="post" class="mx-auto">
             @csrf
-
+            @method('PUT')
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Name')" />
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="Auth::user()->nom" required autofocus />
             </div>
 
             
@@ -24,19 +18,19 @@
             <div class="mt-4">
                 <x-label for="prenom" :value="__('Prenom')" />
                 
-                <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="old('prenom')" required />
+                <x-input id="prenom" class="block mt-1 w-full" type="text" name="prenom" :value="Auth::user()->prenom" required />
             </div>
             
             <!-- Age -->
             <div class="mt-4">
                 <x-label for="age" :value="__('Age')" />
                 
-                <x-input id="age" class="block mt-1 w-full" type="text" name="age" :value="old('age')" required />
+                <x-input id="age" class="block mt-1 w-full" type="text" name="age" :value="Auth::user()->age" required />
             </div>
 
-            <!-- Age -->
+            <!-- avatar -->
             <div class="mt-4">
-                <x-label for="avatar" :value="__('avatar')" />
+                <x-label for="avatar" :value="__('Avatar')" />
                 <select class="form-control mt-1 block w-full" name="avatar">
                     @foreach ($avatars as $avatar)
                     <option value="{{$avatar->id}}">{{$avatar->nom}}</option>
@@ -50,9 +44,19 @@
             <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="Auth::user()->email" required />
             </div>
             
+            <!-- Password -->
+            <div class="mt-4">
+                <x-label for="password" :value="__('Ancien password')" />
+
+                <x-input id="password" class="block mt-1 w-full"
+                                type="password"
+                                name="password"
+                                required autocomplete="new-password" />
+            </div>
+
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
@@ -73,14 +77,12 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
                 <x-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('Valider') }}
                 </x-button>
             </div>
+
+
         </form>
-    </x-auth-card>
-</x-guest-layout>
+    </div>
+</x-app-layout>

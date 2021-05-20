@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AvatarController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/admin/dashboard', function () {
+    return view('admin/dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+//back
+Route::resource('/admin/avatar', AvatarController::class)->middleware(['auth', 'isAdmin']);
+
+Route::resource('/admin/edit/user', UserController::class)->middleware(['auth', 'isAdmin']);

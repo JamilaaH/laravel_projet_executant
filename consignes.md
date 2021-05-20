@@ -2,13 +2,13 @@
 nom du repo : Laravel_projet_executant
 Avant toutes choses, vous devez finir de tout lire avant d''entreprendre quoi que ce soit. C'est un projet à coder essentiellement au niveau du backoffice 
 
-**Consigne :**
+**Consignes :**
 -Au moment de l'enregistrement : laisser les champs de base + ajouter prénom, âge, choix d'un avatar (select) parmi une liste d'avatar
 -Sur la page Dashboard, afficher toutes les données de la personne connectée (possibilité de modifier les données perso) + ajouter 4 onglets dans un menu vertical : 
 *avatars* :  Afficher simplement les avatars. Possibilité d'ajouter un avatar (c'est une image) avec un champ pour le nom de l'avatar et un button pour le supprimer. 
 *images* : C'est une page qui permet d'ajouter des 'images' (**ne pas confondre avec les images de l'onglet 'avatar'**), laisser la  possibilité de choisir dans quelle catégorie on enregistre l'image 
-*catégories* : Afficher les la listes des catégories avec btn add , edit et delete
-*Gallérie* :  Afficher les images sous forme de gallerie avec un button 'téléchargeables'
+*catégories* : Afficher les listes des catégories avec btn add , edit et delete
+*Galerie* :  Afficher les images sous forme de gallerie avec un button 'téléchargeables'
 *Utilisateurs* : Afficher tout les utilisateurs. On peut changer leurs données( le rôle aussi) sauf les users dont le rôles est admin.
 
 **Fonctionnement :**
@@ -19,7 +19,7 @@ Avant toutes choses, vous devez finir de tout lire avant d''entreprendre quoi qu
 -Middleware : 
 Accès au back est refusé tant que l'user n'est pas connecté. 
 Seulement l'*admin* à accès à la page *avatars* + *images* + *utilisateurs* + "catégories"  (caché les onglets pour les *membres*)
-Le rôle *membre* peut voir seulement son Dashboard avec son profil et l'onglet gallérie
+Le rôle *membre* peut voir seulement son Dashboard avec son profil et l'onglet galerie
 
 **A savoir: **
 -2 rôles (admin et membre). Un utilisateur avec le rôle admin créer par défaut dans le seeder. Plusieurs catégories d'images (voiture, animal, tec, art, etc.)
