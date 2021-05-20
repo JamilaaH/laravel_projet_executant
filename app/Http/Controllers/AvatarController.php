@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avatar;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,7 +16,7 @@ class AvatarController extends Controller
      */
     public function index()
     {
-        $avatars = Avatar::all();
+        $avatars = Avatar::where('id', ">", 1)->get();
         return view ('admin.avatar.indexAvatar', compact('avatars'));
     }
 
@@ -93,8 +94,14 @@ class AvatarController extends Controller
      */
     public function destroy(Avatar $avatar)
     {
-        $avatar->delete();
-        Storage::disk('public')->delete('img/' . $avatar->url);
+        $perso = User::where('avatar_id', $avatar->id)->get();
+        foreach ($perso as $user) {
+            // dd($user->avatar_id);
+            $user->avatar_id = 1;
+            $user->save();
+        }
+        // $avatar->delete();
+        // Storage::disk('public')->delete('img/' . $avatar->url);
         return redirect()->route('avatar.index');
     }
 }

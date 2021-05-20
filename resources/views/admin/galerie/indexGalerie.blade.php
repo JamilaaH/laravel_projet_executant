@@ -5,26 +5,25 @@
 
     <div class="container">
         <div class="flex align-items-center ">
-            <h2>Liste des avatars</h2>
-            @if (count($avatars) < 5)
-                <a href={{route('avatar.create')}} class="btn btn-primary ml-10">+</a>       
-            @endif
+            <h2>Galerie</h2>
 
         </div>
         <div class="row">
-            @foreach ($avatars as $avatar)
+            @foreach ($galeries as $galerie)
                 <div class="col-4 mb-2">
-                    <div class="card" style="width: 18rem;">
-                        <img src={{asset('img/'. $avatar->url)}} class="card-img-top" alt="...">
+                    <div class="card">
+                        <img src={{asset('img/galerie/'. $galerie->url)}} class="card-img-top" alt="...">
+                        @admin
                         <div class="card-body d-flex space-x-1">
                             <a href="" class="btn btn-primary">edit</a>
                             <a href="" class="btn btn-success">show</a>
-                            <form action={{route('avatar.destroy', $avatar)}} method="post">
+                            <form action="" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">del</button>
                             </form>
                         </div>
+                        @endadmin
                     </div>
                 </div>
             @endforeach

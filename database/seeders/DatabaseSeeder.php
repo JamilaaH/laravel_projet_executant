@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AvatarSeeder::class,
             RoleSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            CategorieSeeder::class,
+            GalerieSeeder::class
         ]);
     }
 }

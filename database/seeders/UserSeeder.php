@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             "prenom"=>"Jamila",
             "age"=>27,
             "role_id"=>1,
-            "avatar_id"=>1,
+            "avatar_id"=>2,
             "email"=>"jamila@mail.com",
             "password"=>Hash::make('password'),
             "created_at"=>now(),

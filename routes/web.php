@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AvatarController;
+use App\Http\Controllers\GalerieController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,8 @@ require __DIR__.'/auth.php';
 //back
 Route::resource('/admin/avatar', AvatarController::class)->middleware(['auth', 'isAdmin']);
 
-Route::resource('/admin/edit/user', UserController::class)->middleware(['auth', 'isAdmin']);
+Route::resource('/admin/user', UserController::class)->middleware(['auth']);
+
+Route::get('/admin/galerie', [GalerieController::class, 'index'])->name('galerie.index')->middleware(['auth']);
+Route::get('/admin/image/create', [GalerieController::class, 'create'])->name('galerie.create')->middleware(['auth', 'isAdmin']);
+Route::post('/admin/image/store', [GalerieController::class, 'store'])->name('galerie.store')->middleware(['auth', 'isAdmin']);

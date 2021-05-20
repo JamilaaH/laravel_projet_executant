@@ -15,6 +15,7 @@ class AvatarSeeder extends Seeder
     public function run()
     {
         DB::table('avatars')->insert([
+            ["url"=>"defaut.png","nom"=>"defaut"],
             ["url"=>"chat.png","nom"=>"chat"],
             ["url"=>"chien.png","nom"=>"chien"],
             ["url"=>"lapin.png", "nom"=>"lapin"],

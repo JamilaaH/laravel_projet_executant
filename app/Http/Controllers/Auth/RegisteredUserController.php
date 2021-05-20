@@ -21,7 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        $avatars = Avatar::all();
+        $avatars = Avatar::where('id','>', 1)->get();
         return view('auth.register',compact('avatars'));
     }
 
