@@ -29,7 +29,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                         <div class="card bg-light my-2 ">
-                                                                <p><span class="font-weight-bold">Mot de passe</span> : >phone}} </p>
+                                                                <p><span class="font-weight-bold">Mot de passe</span> : ******** </p>
                                                         </div>
                                                 </div>
                                                 <div class="col-6">
