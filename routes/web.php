@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AvatarController;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\GalerieController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,5 +34,10 @@ Route::resource('/admin/avatar', AvatarController::class)->middleware(['auth', '
 Route::resource('/admin/user', UserController::class)->middleware(['auth']);
 
 Route::get('/admin/galerie', [GalerieController::class, 'index'])->name('galerie.index')->middleware(['auth']);
-Route::get('/admin/image/create', [GalerieController::class, 'create'])->name('galerie.create')->middleware(['auth', 'isAdmin']);
-Route::post('/admin/image/store', [GalerieController::class, 'store'])->name('galerie.store')->middleware(['auth', 'isAdmin']);
+Route::get('/admin/image/create', [GalerieController::class, 'create'])->name('galerie.create')->middleware(['auth' ]);
+Route::post('/admin/image/store', [GalerieController::class, 'store'])->name('galerie.store')->middleware(['auth' ]);
+Route::get('/admin/image/download/{id}', [GalerieController::class, 'download'])->name('galerie.download')->middleware(['auth' ]);
+
+
+Route::resource('/admin/categorie', CategorieController::class)->middleware(['auth', 'isAdmin']);
+

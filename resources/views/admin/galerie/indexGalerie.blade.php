@@ -13,6 +13,9 @@
                 <div class="col-4 mb-2">
                     <div class="card">
                         <img src={{asset('img/galerie/'. $galerie->url)}} class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p><span class="font-weight-bold">Catégorie : </span>{{$galerie->categorie->nom}}</p>
+                        </div>
                         @admin
                         <div class="card-body d-flex space-x-1">
                             <a href="" class="btn btn-primary">edit</a>
@@ -24,6 +27,11 @@
                             </form>
                         </div>
                         @endadmin
+                        @member
+                        <div class="card-body">
+                            <a href={{route('galerie.download', $galerie->id)}} class="btn btn-warning">Download</a>
+                        </div>
+                        @endmember
                     </div>
                 </div>
             @endforeach

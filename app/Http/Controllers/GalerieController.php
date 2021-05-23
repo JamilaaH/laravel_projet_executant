@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categorie;
 use App\Models\Galerie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GalerieController extends Controller
 {
@@ -93,5 +94,11 @@ class GalerieController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function download(Galerie $id)
+    {
+        return Storage::disk('public')->download('img/galerie/'. $id->url);
+        // return Storage::download('img/galerie/'. $id->url);
     }
 }

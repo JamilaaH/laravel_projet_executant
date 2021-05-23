@@ -75,6 +75,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->authorize('isRealUser', $user);
         $request->validate([
             'name' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',

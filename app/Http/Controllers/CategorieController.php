@@ -14,7 +14,9 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Categorie::all();
+        return view ('admin.categorie.indexCategorie', compact('categories'));
+
     }
 
     /**
@@ -24,7 +26,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categorie.createCategorie');
     }
 
     /**
@@ -35,7 +37,15 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "nom"=>"required|",
+        ]);
+
+        $categorie = new Categorie();
+        $categorie->nom = $request->nom;
+        $categorie->save();
+        return redirect()->route('categorie.index');
+
     }
 
     /**
@@ -57,7 +67,7 @@ class CategorieController extends Controller
      */
     public function edit(Categorie $categorie)
     {
-        //
+        return view('admin.categorie.editCategorie',compact('categorie'));
     }
 
     /**
@@ -67,9 +77,15 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categorie $categorie)
+    public function update(Request $request, Categorie $categorie) 
     {
-        //
+        $request->validate([
+            "nom"=>"required"
+        ]);
+
+        $categorie->nom = $request->nom;
+        $categorie->save();
+        return redirect()->route('categorie.index');
     }
 
     /**
@@ -80,6 +96,7 @@ class CategorieController extends Controller
      */
     public function destroy(Categorie $categorie)
     {
-        //
+        $categorie->delete();
+        return redirect()->route('categorie.index');
     }
 }

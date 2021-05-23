@@ -37,13 +37,14 @@
                                                                 <p><span class="font-weight-bold">Nom</span> : {{Auth::user()->nom}} </p>
                                                         </div>
                                                         <div class="card bg-light my-2">
-                                                                <p><span class="font-weight-bold">Prenom</span> : {{Auth::user()->prenom}} </p>
+                                                                <p><span class="font-weight-bold">Age</span> : {{Auth::user()->age}} ans </p>
                                                         </div>
                                                 </div>
                                                 <div class="col-6">
                                                         <div class="card bg-light my-2">
-                                                                <p><span class="font-weight-bold">Age</span> : {{Auth::user()->age}} ans </p>
+                                                                <p><span class="font-weight-bold">Prénom</span> : {{Auth::user()->prenom}} </p>
                                                         </div>
+
                                                 </div>
                                         </div>
                                 </div>
