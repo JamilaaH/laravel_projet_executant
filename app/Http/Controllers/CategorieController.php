@@ -38,7 +38,7 @@ class CategorieController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "nom"=>"required|",
+            "nom"=>"required",
         ]);
 
         $categorie = new Categorie();

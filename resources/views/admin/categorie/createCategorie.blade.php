@@ -8,11 +8,11 @@
         <form action={{route('categorie.store')}} method="post">
             @csrf
             <div class="form-group">
-                <label for="categorie">Catégorie : </label>
-                <input type="text" name="categorie" id="categorie">
-                @error('categorie')
-                <span class="invalid-feedback">{{$message}}</span>
-            @enderror
+                <label for="nom">Catégorie : </label>
+                <input type="text" name="nom" id="nom" class="form-control @error('nom') is-invalid @enderror">
+                @error('nom')
+                    <span class="invalid-feedback">{{$message}}</span>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Valider</button>
         </form>
